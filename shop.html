@@ -84,7 +84,7 @@ function addShoppingListItem(name, price, amt) {
 	while (node.firstChild) {
 	    node.removeChild(node.firstChild)
 	}
-	for (let key in items) {
+	for (const key in items) {
 		const tmp = document.createElement("li")
 		node.appendChild(tmp)
 		tmp.innerHTML = key+" x"+items[key]
