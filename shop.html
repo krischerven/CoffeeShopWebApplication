@@ -101,7 +101,10 @@ function finishPurchase() {
 	} else {
 		let strcost = ""+cost
 		if (Math.floor(cost) !== cost) {
-			strcost += "0"
+			const split = strcost.split(".")
+			if (split.length == 2 && split[1].length == 1) {
+				strcost += "0"
+			}
 		}
 		document.getElementById("purchase").style.color = "#ffffff"
 		document.getElementById("purchase").innerText = "Thank you for your purchase, " + (document.getElementById("name1").value+" "+
