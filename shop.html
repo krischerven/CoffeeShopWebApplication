@@ -119,6 +119,9 @@ function finishPurchase() {
 	} else if (document.getElementById("name2").value == "") {
 		document.getElementById("purchase").style.color = "#ea0000"
 		document.getElementById("purchase").innerText = "Error: please enter a last name!"
+	} else if (Object.keys(items).length == 0) {
+		document.getElementById("purchase").style.color = "#ea0000"
+		document.getElementById("purchase").innerText = "Error: please select at least one item!"
 	} else {
 		document.getElementById("purchase").style.color = "#ffffff"
 		document.getElementById("purchase").innerText = "Thank you for your purchase, " + (document.getElementById("name1").value+" "+
