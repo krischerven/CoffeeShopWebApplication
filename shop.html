@@ -11,11 +11,26 @@
 <body>
 <h4><strong>Product List</strong></h4>
 <ol>
-	<li>Black Coffee: $3 (<a href="#" onclick="addShoppingListItem('Black Coffee', 3);">Add 1</a>)</li>
-	<li>Cappuccino: $5 (<a href="#" onclick="addShoppingListItem('Cappuccino', 5);">Add 1</a>)</li>
-	<li>Green Tea: $4 (<a href="#" onclick="addShoppingListItem('Green Tea', 4);">Add 1</a>)</li>
-	<li>Chai Tea: $4.50 (<a href="#" onclick="addShoppingListItem('Chai Tea', 6.50);">Add 1</a>)</li>
-	<li>Croissant: $6.50 (<a href="#" onclick="addShoppingListItem('Croissant', 6.50);">Add 1</a>)</li>
+	<li>Black Coffee: $3 
+		(<a href="#" onclick="addShoppingListItem('Black Coffee', 3);">Add 1</a>)
+		(<a href="#" onclick="addShoppingListItem('Black Coffee', 3, true);">Add Many</a>)
+	</li>
+	<li>Cappuccino: $5 
+		(<a href="#" onclick="addShoppingListItem('Cappuccino', 5);">Add 1</a>)
+		(<a href="#" onclick="addShoppingListItem('Cappuccino', 5, true);">Add Many</a>)
+	</li>
+	<li>Green Tea: $4 
+		(<a href="#" onclick="addShoppingListItem('Green Tea', 4);">Add 1</a>)
+		(<a href="#" onclick="addShoppingListItem('Green Tea', 4, true);">Add Many</a>)
+	</li>
+	<li>Chai Tea: $4.50 
+		(<a href="#" onclick="addShoppingListItem('Chai Tea', 6.50);">Add 1</a>)
+		(<a href="#" onclick="addShoppingListItem('Chai Tea', 6.50, true);">Add Many</a>)
+	</li>
+	<li>Croissant: $6.50 
+		(<a href="#" onclick="addShoppingListItem('Croissant', 6.50);">Add 1</a>)
+		(<a href="#" onclick="addShoppingListItem('Croissant', 6.50, true);">Add Many</a>)
+	</li>
 </ol>
 </div>
 </div>
@@ -44,11 +59,15 @@
 let cost = 0
 const items = {}
 
-function addShoppingListItem(name, price) {
+function addShoppingListItem(name, price, _prompt = false) {
+	let amt = 1
+	if (_prompt) {
+		amt = parseInt(prompt("Please enter the number", "1"), 10) || 1
+	}
 	if (!(name in items)) {
 		items[name] = 0
 	}
-	++items[name]
+	items[name] += amt
 	cost += price
 	document.getElementById("empty_cart").innerText = ""
 	node = document.getElementById("cart")
