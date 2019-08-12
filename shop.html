@@ -76,7 +76,7 @@ function addShoppingListItem(name, price, amt) {
 	document.getElementById("empty_cart").innerText = ""
 	node = document.getElementById("cart")
 	while (node.firstChild) {
-	    node.removeChild(node.firstChild);
+	    node.removeChild(node.firstChild)
 	}
 	for (let key in items) {
 		const tmp = document.createElement("li")
@@ -93,9 +93,13 @@ function finishPurchase() {
 		document.getElementById("purchase").style.color = "#ea0000"
 		document.getElementById("purchase").innerText = "Error: please enter a last name!"
 	} else {
+		let strcost = ""+cost
+		if (Math.floor(cost) !== cost) {
+			strcost += "0"
+		}
 		document.getElementById("purchase").style.color = "#ffffff"
 		document.getElementById("purchase").innerText = "Thank you for your purchase, " + (document.getElementById("name1").value+" "+
-			document.getElementById("name2").value)+ ". Your total is $" + cost + "."
+			document.getElementById("name2").value)+ ". Your total is $" + strcost + "."
 	}
 }
 
