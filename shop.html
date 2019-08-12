@@ -69,15 +69,35 @@
 
 let cost = 0
 const items = {}
+const prices = {}
+const amount = {}
+const each = {}
 
 function addShoppingListItem(name, price, amt) {
+
 	if (amt === true) {
 		amt = parseInt(prompt("Please enter the number", "1"), 10) || 1
 	}
+
 	if (!(name in items)) {
 		items[name] = 0
 	}
+
 	items[name] += amt
+	prices[name] = price
+
+	if (items[name] > 1) {
+		amount[name] = (" x"+items[name])
+	} else {
+		amount[name] = ""
+	}
+
+	if (items[name] > 1) {
+		each[name] = " each"
+	} else {
+		each[name] = ""
+	}
+
 	cost += (price*amt*1.06)
 	document.getElementById("empty_cart").innerText = ""
 	node = document.getElementById("cart")
@@ -89,6 +109,7 @@ function addShoppingListItem(name, price, amt) {
 		node.appendChild(tmp)
 		tmp.innerHTML = key+" x"+items[key]
 	}
+
 }
 
 function finishPurchase() {
@@ -101,7 +122,11 @@ function finishPurchase() {
 	} else {
 		document.getElementById("purchase").style.color = "#ffffff"
 		document.getElementById("purchase").innerText = "Thank you for your purchase, " + (document.getElementById("name1").value+" "+
-			document.getElementById("name2").value)+ ". Your total is $" + cost.toFixed(2) + "."
+			document.getElementById("name2").value)+ ". Your total is $" + cost.toFixed(2) + ":\n"
+		for (const name in items) {
+			document.getElementById("purchase").innerText += ("\n"+name+amount[name]+": " + "$"+prices[name].toFixed(2) + each[name])
+		}
+		document.getElementById("purchase").innerText += "\nSales Tax: +6%"
 	}
 }
 
