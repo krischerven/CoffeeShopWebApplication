@@ -99,16 +99,9 @@ function finishPurchase() {
 		document.getElementById("purchase").style.color = "#ea0000"
 		document.getElementById("purchase").innerText = "Error: please enter a last name!"
 	} else {
-		let strcost = ""+cost
-		if (Math.floor(cost) !== cost) {
-			const split = strcost.split(".")
-			if (split.length == 2 && split[1].length == 1) {
-				strcost += "0"
-			}
-		}
 		document.getElementById("purchase").style.color = "#ffffff"
 		document.getElementById("purchase").innerText = "Thank you for your purchase, " + (document.getElementById("name1").value+" "+
-			document.getElementById("name2").value)+ ". Your total is $" + strcost + "."
+			document.getElementById("name2").value)+ ". Your total is $" + cost.toFixed(2) + "."
 	}
 }
 
