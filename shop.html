@@ -72,7 +72,7 @@ function addShoppingListItem(name, price, amt) {
 		items[name] = 0
 	}
 	items[name] += amt
-	cost += price
+	cost += price*amt
 	document.getElementById("empty_cart").innerText = ""
 	node = document.getElementById("cart")
 	while (node.firstChild) {
